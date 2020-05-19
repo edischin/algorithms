@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace MergeSort.Cmd
 {
@@ -19,19 +20,19 @@ namespace MergeSort.Cmd
                 input[i] = randomGen.Next(input.Length);
             
             clock.Stop();
-            //Console.WriteLine("> Input array:");
-            //Console.WriteLine(string.Join(',', input));
+            Console.WriteLine("> Input array:");
+            Console.WriteLine((arraySize > 100 ? $"{string.Join(',', input.Take(100))},..." : string.Join(',', input)));
             Console.WriteLine($"> Elapsed Time: {clock.Elapsed.TotalMilliseconds} milliseconds");
 
             clock.Reset();
             Console.WriteLine($"> Initiating Merge Sort...");
             clock.Start();
 
-            var outputA = MergeSort.Lib.MergeSortFuncs.MergeSortArray(input);
+            var output = MergeSort.Lib.MergeSortFuncs.MergeSortArray(input);
 
             clock.Stop();
-            //Console.WriteLine("> Sorted Array Values:");
-            //Console.WriteLine(string.Join(',', outputA));
+            Console.WriteLine("> Sorted Array Values:");
+            Console.WriteLine((arraySize > 100 ? $"{string.Join(',', output.Take(100))},..." : string.Join(',', output)));
             Console.WriteLine($"> Elapsed Time: {clock.Elapsed.TotalMilliseconds} milliseconds");
         }
     }
